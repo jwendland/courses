@@ -82,4 +82,16 @@ class CircuitSuite extends CircuitSimulator with FunSuite {
     assert(out.getSignal === true, "0|1=1")
 
   }
+
+  test("demux 0") {
+    val in, out = new Wire
+    demux(in, Nil, List(out))
+    in setSignal true
+    run
+    assert(out.getSignal === true, "1->1")
+    in setSignal false
+    run
+    assert(out.getSignal === false, "0->0")
+
+  }
 }
